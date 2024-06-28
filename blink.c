@@ -1,14 +1,14 @@
-#define __MSP430G2553__
-#define CYCLES 1000000L
+#include "blink.h"
 
-#include <msp430.h>
-
+void setup() {
+    WDTCTL = WDTPW | WDTHOLD; // Stop watchdog timer
+}
 
 void main(void)
 {
     WDTCTL = WDTPW | WDTHOLD; // stop watchdog timer
     P1DIR |= 0x01; // configure P1.0 as output
-
+ 
     volatile unsigned int i; // volatile to prevent optimization
 
     while(1)
